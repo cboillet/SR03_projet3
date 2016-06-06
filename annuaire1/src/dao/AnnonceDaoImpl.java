@@ -16,7 +16,7 @@ import com.mysql.jdbc.PreparedStatement;
 import beans.Annonce;
 
 public class AnnonceDaoImpl implements AnnonceDao {
-	
+	private static final String SQL_INSERT = "INSERT INTO annonce (fk_id_categorie, name) VALUES (?,?)";
 	private DAOFactory daoFactory;
 	
 	AnnonceDaoImpl( DAOFactory daoFactory ) {
@@ -32,7 +32,7 @@ public class AnnonceDaoImpl implements AnnonceDao {
         try {
             /* Récupération d'une connexion depuis la Factory */
             connexion = (Connection) daoFactory.getConnection();
-            preparedStatement = getRequetePreparee( connexion, SQL_INSERT, true, categorie.getName());
+            preparedStatement = getRequetePreparee( connexion, SQL_INSERT, true, idCategorie, annonce.getName());
             int statut = preparedStatement.executeUpdate();
             /* Analyse du statut retourné par la requête d'insertion */
             if ( statut == 0 ) {
@@ -41,7 +41,7 @@ public class AnnonceDaoImpl implements AnnonceDao {
             
             valeursAutoGenerees = preparedStatement.getGeneratedKeys();
             if ( valeursAutoGenerees.next() ) {
-                categorie.setId( valeursAutoGenerees.getLong( 1 ) );
+                annonce.setId( valeursAutoGenerees.getLong( 1 ) );
             } else {
                 throw new DAOException( "Échec de la création de la question en base, aucun ID auto-généré retourné." );
             }

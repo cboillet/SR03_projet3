@@ -23,17 +23,23 @@ public class Admin {
 		System.out.println("nome de la categorie ajoutée" + categorie.getName());
 		categorieDao.creer(categorie);
 	}
-	public void modifierCategorie(){}
+	public void modifierCategorie(String oldName, String newName){
+		categorieDao = DAOFactory.getInstance().getCategorieDao();
+		Categorie categorie = categorieDao.findCategorie(oldName);
+		categorie.setName(newName);
+		categorieDao.modify(categorie);
+	}
+	
 	public void supprimerCategorie(){}
 	
 	/*Annonces*/
-	public void ajouterAnnonce(String nameCategorie, String nameAnnonce){
+	public void creerAnnonce(String nameCategorie, String nameAnnonce){
 		categorieDao = DAOFactory.getInstance().getCategorieDao();
 		annonceDao = DAOFactory.getInstance().getAnnonceDao();
 		Categorie categorie = categorieDao.findCategorie(nameCategorie);
 		Annonce annonce = new Annonce();
 		annonce.setName(nameAnnonce);
-		
+		annonceDao.creer(categorie.getId(), annonce);		
 	}
 	public void supprimerAnnonce(){}
 	public void modifierAnnonce(){}

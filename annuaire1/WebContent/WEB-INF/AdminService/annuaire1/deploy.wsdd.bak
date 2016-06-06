@@ -1,0 +1,41 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from AdminService WSDL service -->
+
+  <service name="Admin" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://annuaire1"/>
+      <parameter name="wsdlServiceElement" value="AdminService"/>
+      <parameter name="schemaQualified" value="http://annuaire1"/>
+      <parameter name="wsdlServicePort" value="Admin"/>
+      <parameter name="className" value="annuaire1.AdminSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="Admin"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="ajouterAnnonce" qname="operNS:ajouterAnnonce" xmlns:operNS="http://annuaire1" soapAction="" >
+        <parameter qname="pns:nameCategorie" xmlns:pns="http://annuaire1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:nameAnnonce" xmlns:pns="http://annuaire1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="modifierAnnonce" qname="operNS:modifierAnnonce" xmlns:operNS="http://annuaire1" soapAction="" >
+      </operation>
+      <operation name="modifierCategorie" qname="operNS:modifierCategorie" xmlns:operNS="http://annuaire1" soapAction="" >
+      </operation>
+      <operation name="afficherAdresse" qname="operNS:afficherAdresse" xmlns:operNS="http://annuaire1" soapAction="" >
+      </operation>
+      <operation name="creerCategorie" qname="operNS:creerCategorie" xmlns:operNS="http://annuaire1" soapAction="" >
+        <parameter qname="pns:name" xmlns:pns="http://annuaire1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="supprimerAnnonce" qname="operNS:supprimerAnnonce" xmlns:operNS="http://annuaire1" soapAction="" >
+      </operation>
+      <parameter name="allowedMethods" value="modifierCategorie supprimerAnnonce modifierAnnonce afficherAdresse creerCategorie ajouterAnnonce"/>
+
+  </service>
+</deployment>

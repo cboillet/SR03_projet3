@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://annuaire1" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://annuaire1" xmlns:intf="http://annuaire1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://annuaire1" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="ajouterAnnonce">
+    <complexType>
+     <sequence>
+      <element name="nameCategorie" type="xsd:string"/>
+      <element name="nameAnnonce" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="ajouterAnnonceResponse">
+    <complexType/>
+   </element>
+   <element name="modifierAnnonce">
+    <complexType/>
+   </element>
+   <element name="modifierAnnonceResponse">
+    <complexType/>
+   </element>
+   <element name="modifierCategorie">
+    <complexType/>
+   </element>
+   <element name="modifierCategorieResponse">
+    <complexType/>
+   </element>
+   <element name="afficherAdresse">
+    <complexType/>
+   </element>
+   <element name="afficherAdresseResponse">
+    <complexType/>
+   </element>
+   <element name="creerCategorie">
+    <complexType>
+     <sequence>
+      <element name="name" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="creerCategorieResponse">
+    <complexType/>
+   </element>
+   <element name="supprimerAnnonce">
+    <complexType/>
+   </element>
+   <element name="supprimerAnnonceResponse">
+    <complexType/>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="modifierCategorieResponse">
+
+      <wsdl:part element="impl:modifierCategorieResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="creerCategorieRequest">
+
+      <wsdl:part element="impl:creerCategorie" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="supprimerAnnonceRequest">
+
+      <wsdl:part element="impl:supprimerAnnonce" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ajouterAnnonceRequest">
+
+      <wsdl:part element="impl:ajouterAnnonce" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="modifierCategorieRequest">
+
+      <wsdl:part element="impl:modifierCategorie" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="afficherAdresseRequest">
+
+      <wsdl:part element="impl:afficherAdresse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ajouterAnnonceResponse">
+
+      <wsdl:part element="impl:ajouterAnnonceResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="modifierAnnonceResponse">
+
+      <wsdl:part element="impl:modifierAnnonceResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="afficherAdresseResponse">
+
+      <wsdl:part element="impl:afficherAdresseResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="modifierAnnonceRequest">
+
+      <wsdl:part element="impl:modifierAnnonce" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="creerCategorieResponse">
+
+      <wsdl:part element="impl:creerCategorieResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="supprimerAnnonceResponse">
+
+      <wsdl:part element="impl:supprimerAnnonceResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Admin">
+
+      <wsdl:operation name="ajouterAnnonce">
+
+         <wsdl:input message="impl:ajouterAnnonceRequest" name="ajouterAnnonceRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:ajouterAnnonceResponse" name="ajouterAnnonceResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modifierAnnonce">
+
+         <wsdl:input message="impl:modifierAnnonceRequest" name="modifierAnnonceRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:modifierAnnonceResponse" name="modifierAnnonceResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modifierCategorie">
+
+         <wsdl:input message="impl:modifierCategorieRequest" name="modifierCategorieRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:modifierCategorieResponse" name="modifierCategorieResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="afficherAdresse">
+
+         <wsdl:input message="impl:afficherAdresseRequest" name="afficherAdresseRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:afficherAdresseResponse" name="afficherAdresseResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="creerCategorie">
+
+         <wsdl:input message="impl:creerCategorieRequest" name="creerCategorieRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:creerCategorieResponse" name="creerCategorieResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="supprimerAnnonce">
+
+         <wsdl:input message="impl:supprimerAnnonceRequest" name="supprimerAnnonceRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:supprimerAnnonceResponse" name="supprimerAnnonceResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="AdminSoapBinding" type="impl:Admin">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="ajouterAnnonce">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ajouterAnnonceRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ajouterAnnonceResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modifierAnnonce">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="modifierAnnonceRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="modifierAnnonceResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modifierCategorie">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="modifierCategorieRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="modifierCategorieResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="afficherAdresse">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="afficherAdresseRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="afficherAdresseResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="creerCategorie">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="creerCategorieRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="creerCategorieResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="supprimerAnnonce">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="supprimerAnnonceRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="supprimerAnnonceResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="AdminService">
+
+      <wsdl:port binding="impl:AdminSoapBinding" name="Admin">
+
+         <wsdlsoap:address location="http://localhost:8079/annuaire1/services/Admin"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

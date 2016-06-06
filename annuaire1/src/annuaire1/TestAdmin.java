@@ -9,8 +9,7 @@ public class TestAdmin {
 	
 	public static void main(String[] args){
 		admin = new Admin();
-		admin.creerAnnonce("Hebergement","Maison de campagne");
-		admin.modifierAnnonce((long)2, null, null, null, null, null, null);	
-		
+		String resultat= admin.afficherAdresse("Compiegne");
+		System.out.println(resultat);
 	}
 }

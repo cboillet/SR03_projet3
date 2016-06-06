@@ -1,5 +1,7 @@
 package annuaire1;
 
+import java.util.List;
+
 import beans.Adresse;
 import beans.Annonce;
 import beans.Categorie;
@@ -24,24 +26,24 @@ public class Admin {
 		System.out.println("nome de la categorie ajoutée" + categorie.getName());
 		categorieDao.creer(categorie);
 	}
-	public void modifierCategorie(String oldName, String newName){
+	public void modifierCategorie(Long categorieID, String newName){
 		categorieDao = DAOFactory.getInstance().getCategorieDao();
-		Categorie categorie = categorieDao.findCategorie(oldName);
+		Categorie categorie = categorieDao.findCategorie(categorieID);
 		categorie.setName(newName);
 		System.out.println("Numero de la categorie" + categorie.getId());
 		categorieDao.modify(categorie);
 	}
 	
-	public void supprimerCategorie(String categorieName){
+	public void supprimerCategorie(Long categorieID){
 		categorieDao = DAOFactory.getInstance().getCategorieDao();
-		categorieDao.delete(categorieName);
+		categorieDao.delete(categorieID);
 	}
 	
 	/*Annonces*/
-	public void creerAnnonce(String nameCategorie, String nameAnnonce){
+	public void creerAnnonce(Long categorieID, String nameAnnonce){
 		categorieDao = DAOFactory.getInstance().getCategorieDao();
 		annonceDao = DAOFactory.getInstance().getAnnonceDao();
-		Categorie categorie = categorieDao.findCategorie(nameCategorie);
+		Categorie categorie = categorieDao.findCategorie(categorieID);
 		Annonce annonce = new Annonce();
 		annonce.setName(nameAnnonce);
 		annonceDao.creer(categorie.getId(), annonce);		
@@ -57,26 +59,97 @@ public class Admin {
 		Adresse adresse = annonce.getAdresse();
 		System.out.println("Annonce à modifier" + annonce.getName());
 		
-		if(!name.equals(null)){annonce.setName(name);}
+		if(name != null && !name.isEmpty()){annonce.setName(name);}
 		if(telephone != null){annonce.setTelephone(telephone);}
 		if(numero != null){adresse.setNumero(numero);}
-		if(!rue.equals(null)){adresse.setRue(rue);}
+		if(rue != null && !rue.isEmpty()){ System.out.println("Test rue"); adresse.setRue(rue);}
 		if(codePostal!=null){adresse.setCodePostal(codePostal);}
-		if(!ville.equals(null)){adresse.setVille(ville);}
-	
+		if(ville != null && !ville.isEmpty()){adresse.setVille(ville);}
+		annonce.setAdresse(adresse);
+		annonceDao.modify(annonce);
 	}
 	
-	/*Affichage*/
-	public String afficherAdresse(){
-		return "";
+	/*Affichage classement par ville*/
+	public String afficherAdresse(String ville){
+		annonceDao = DAOFactory.getInstance().getAnnonceDao();
+		List<Annonce> liste = annonceDao.listerAnnonceVille(ville);
+		String resultat = "";
+		Adresse adresse;
+		for(Annonce annonce : liste){
+			adresse = annonce.getAdresse();
+			resultat += "<annonce>"
+					 + "<id>" + annonce.getId() + "</id>"
+					 + "<nom>" + annonce.getName() + "</nom>"
+					 + "<telephone>" + annonce.getTelephone() + "</telephone>" 
+					 + "<adresse>" 
+					 	+ "<numero>" + adresse.getNumero() + "</numero>"
+					 	+ "<rue>" + adresse.getRue() + "</rue>"
+					 	+ "<codepostal>" + adresse.getCodePostal() + "</codepostal>"
+					 	+ "<ville>" + adresse.getVille() + "</ville>"
+					 + "</adresse>"
+					 + "</annonce>"; 
+		}
+		return resultat;
 	}
-	public String afficherNom(String nomAnnonce){
-		return "";
+	public String listAnnonces(Long categorieID){
+		annonceDao = DAOFactory.getInstance().getAnnonceDao();
+		List<Annonce> liste = annonceDao.listerAnnonce(categorieID);
+		String resultat = "";
+		Adresse adresse;
+		for(Annonce annonce : liste){
+			adresse = annonce.getAdresse();
+			resultat += "<annonce>"
+					 + "<id>" + annonce.getId() + "</id>"
+					 + "<nom>" + annonce.getName() + "</nom>"
+					 + "<telephone>" + annonce.getTelephone() + "</telephone>" 
+					 + "<adresse>" 
+					 	+ "<numero>" + adresse.getNumero() + "</numero>"
+					 	+ "<rue>" + adresse.getRue() + "</rue>"
+					 	+ "<codepostal>" + adresse.getCodePostal() + "</codepostal>"
+					 	+ "<ville>" + adresse.getVille() + "</ville>"
+					 + "</adresse>"
+					 + "</annonce>"; 
+		}
+		
+		return resultat;
 	}
-	public String getCategorie(String gategorieName){
-		return "";
+	public String afficherAnnonce(Long annonceID){
+		String resultat;
+		annonceDao = DAOFactory.getInstance().getAnnonceDao();
+		Annonce annonce = annonceDao.findAnnonce(annonceID);
+		Adresse adresse = annonce.getAdresse();
+		resultat="<annonce>"
+				 + "<id>" + annonce.getId() + "</id>"
+				 + "<nom>" + annonce.getName() + "</nom>"
+				 + "<telephone>" + annonce.getTelephone() + "</telephone>" 
+				 + "<adresse>" 
+				 	+ "<numero>" + adresse.getNumero() + "</numero>"
+				 	+ "<rue>" + adresse.getRue() + "</rue>"
+				 	+ "<codepostal>" + adresse.getCodePostal() + "</codepostal>"
+				 	+ "<ville>" + adresse.getVille() + "</ville>"
+				 + "</adresse>"
+				 + "</annonce>"; 
+		return resultat;
 	}
-	public String listCategorie(){
-		return "";
+	public String afficherCategorie(Long categorieID){
+		categorieDao = DAOFactory.getInstance().getCategorieDao();
+		Categorie categorie = categorieDao.findCategorie(categorieID);
+
+		return "<categorie>"
+		 + "<id>" + categorie.getId() + "</id>"
+		 + "<nom>" + categorie.getName() + "</nom>"
+		 + "</categorie>"; 
+	}
+	public String listCategories(){
+		categorieDao = DAOFactory.getInstance().getCategorieDao();
+		List<Categorie> liste = categorieDao.listerCategorie();
+		String resultat="";
+		for(Categorie categorie : liste){
+			resultat += "<categorie>"
+					 + "<id>" + categorie.getId() + "</id>"
+					 + "<nom>" + categorie.getName() + "</nom>"
+					 + "</categorie>"; 
+		}
+		return resultat;
 	}
 }

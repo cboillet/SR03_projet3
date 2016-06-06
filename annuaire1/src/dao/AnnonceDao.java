@@ -1,5 +1,7 @@
 package dao;
 
-public interface AnnonceDao {
+import beans.Annonce;
 
+public interface AnnonceDao {
+	void creer( Long idCategorie, Annonce annonce) throws DAOException;
 }

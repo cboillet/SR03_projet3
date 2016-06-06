@@ -24,9 +24,12 @@ public class Admin {
 		categorieDao.creer(categorie);
 	}
 	public void modifierCategorie(){}
+	public void supprimerCategorie(){}
+	
 	/*Annonces*/
 	public void ajouterAnnonce(String nameCategorie, String nameAnnonce){
 		categorieDao = DAOFactory.getInstance().getCategorieDao();
+		annonceDao = DAOFactory.getInstance().getAnnonceDao();
 		Categorie categorie = categorieDao.findCategorie(nameCategorie);
 		Annonce annonce = new Annonce();
 		annonce.setName(nameAnnonce);
@@ -34,7 +37,18 @@ public class Admin {
 	}
 	public void supprimerAnnonce(){}
 	public void modifierAnnonce(){}
-	/*Affichage*/
-	public void afficherAdresse(){}
 	
+	/*Affichage*/
+	public String afficherAdresse(){
+		return "";
+	}
+	public String afficherNom(String nomAnnonce){
+		return "";
+	}
+	public String getCategorie(String gategorieName){
+		return "";
+	}
+	public String listCategorie(){
+		return "";
+	}
 }

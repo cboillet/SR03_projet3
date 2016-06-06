@@ -12,7 +12,6 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
 import beans.Categorie;
-import beans.Question;
 
 public class CategorieDaoImpl implements CategorieDao {
 	private static final String SQL_INSERT = "INSERT INTO categorie (name) VALUES (?)";

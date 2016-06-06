@@ -17,6 +17,7 @@ public class CategorieDaoImpl implements CategorieDao {
 	private static final String SQL_INSERT = "INSERT INTO categorie (name) VALUES (?)";
 	private static final String SQL_FIND_CATEGORIE = "SELECT * FROM categorie WHERE categorie.name=?";	
 	private static final String SQL_MODIFY = "UPDATE categorie SET categorie.name=? WHERE categorie.id=?";	
+	private static final String SQL_DELETE = "DELETE FROM categorie WHERE categorie.name=?";	
 	private DAOFactory daoFactory;
 	
 	CategorieDaoImpl( DAOFactory daoFactory ) {
@@ -43,7 +44,7 @@ public class CategorieDaoImpl implements CategorieDao {
             if ( valeursAutoGenerees.next() ) {
                 categorie.setId( valeursAutoGenerees.getLong( 1 ) );
             } else {
-                throw new DAOException( "Échec de la création de la question en base, aucun ID auto-généré retourné." );
+                throw new DAOException( "Échec de la création de la categorie en base, aucun ID auto-généré retourné." );
             }
         } catch ( SQLException e ) {
             throw new DAOException( e );
@@ -56,28 +57,41 @@ public class CategorieDaoImpl implements CategorieDao {
 	public void modify( Categorie categorie) throws DAOException{
 		Connection connexion = null;
         PreparedStatement preparedStatement = null;
-        ResultSet valeursAutoGenerees = null;
 
         try {
             /* Récupération d'une connexion depuis la Factory */
             connexion = (Connection) daoFactory.getConnection();
-            preparedStatement = getRequetePreparee( connexion, SQL_MODIFY, true, categorie.getName(), categorie.getId());
+            preparedStatement = getRequetePreparee( connexion, SQL_MODIFY, false, categorie.getName(), categorie.getId() );
             int statut = preparedStatement.executeUpdate();
             /* Analyse du statut retourné par la requête d'insertion */
             if ( statut == 0 ) {
-                throw new DAOException( "Échec de la création de la question, aucune ligne ajoutée dans la table." );
-            }
-            
-            valeursAutoGenerees = preparedStatement.getGeneratedKeys();
-            if ( valeursAutoGenerees.next() ) {
-                categorie.setId( valeursAutoGenerees.getLong( 1 ) );
-            } else {
-                throw new DAOException( "Échec de la création de la question en base, aucun ID auto-généré retourné." );
+                throw new DAOException( "Échec de la mise à jour de la categorie, aucune ligne modifiée dans la table." );
             }
         } catch ( SQLException e ) {
             throw new DAOException( e );
         } finally {
-            fermeturesSilencieuses( valeursAutoGenerees, preparedStatement, connexion );
+            fermeturesSilencieuses( preparedStatement, connexion );
+        }
+	}
+	
+	@Override
+	public void delete( String categorieName) throws DAOException{
+        Connection connexion = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            /* Récupération d'une connexion depuis la Factory */
+            connexion = (Connection) daoFactory.getConnection();
+            preparedStatement = getRequetePreparee( connexion, SQL_DELETE, false, categorieName );
+            int statut = preparedStatement.executeUpdate();
+            /* Analyse du statut retourné par la requête d'insertion */
+            if ( statut == 0 ) {
+                throw new DAOException( "Échec de la suppression de la question, aucune ligne supprimée de la table." );
+            }
+        } catch ( SQLException e ) {
+            throw new DAOException( e );
+        } finally {
+            fermeturesSilencieuses( preparedStatement, connexion );
         }
 	}
 	

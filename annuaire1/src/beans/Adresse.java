@@ -1,15 +1,15 @@
 package beans;
 
 public class Adresse {
-	private int numero;
+	private Long numero;
 	private String rue;
 	private String ville;
-	private int codePostal;
+	private Long codePostal;
 	
-	public int getNumero() {
+	public Long getNumero() {
 		return numero;
 	}
-	public void setNumero(int numero) {
+	public void setNumero(Long numero) {
 		this.numero = numero;
 	}
 	public String getRue() {
@@ -24,10 +24,10 @@ public class Adresse {
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
-	public int getCodePostal() {
+	public Long getCodePostal() {
 		return codePostal;
 	}
-	public void setCodePostal(int codePostal) {
+	public void setCodePostal(Long codePostal) {
 		this.codePostal = codePostal;
 	}
 }

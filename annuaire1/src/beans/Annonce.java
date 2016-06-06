@@ -4,7 +4,7 @@ public class Annonce {
 	private Long id;
 	private String name;
 	private Adresse adresse;
-	private int telephone;
+	private Long telephone;
 	
 	public Long getId() {
 		return id;
@@ -24,10 +24,10 @@ public class Annonce {
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
-	public int getTelephone() {
+	public Long getTelephone() {
 		return telephone;
 	}
-	public void setTelephone(int telephone) {
+	public void setTelephone(Long telephone) {
 		this.telephone = telephone;
 	}
 }

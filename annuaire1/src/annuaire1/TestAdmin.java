@@ -9,6 +9,8 @@ public class TestAdmin {
 	
 	public static void main(String[] args){
 		admin = new Admin();
-		admin.modifierCategorie("Loisirs","Tourisme");
+		admin.creerAnnonce("Hebergement","Maison de campagne");
+		admin.modifierAnnonce((long)2, null, null, null, null, null, null);	
+		
 	}
 }

@@ -87,6 +87,29 @@ public class Admin {
 	public void supprimerAnnonce(Long annonceID){
 		annonceDao.delete(annonceID);
 	}
+	//liste les catégories
+	public String listAnnonces(){
+		List<Annonce> liste = annonceDao.listerAnnonce();
+		String resultat="<liste>";
+		Adresse adresse;
+		for(Annonce annonce : liste){
+			adresse = annonce.getAdresse();
+			resultat += "<annonce>"
+					 + "<id>" + annonce.getId() + "</id>"
+					 + "<nom>" + annonce.getName() + "</nom>"
+					 + "<cat>" + annonce.getId_categorie() + "</cat>"
+					 + "<telephone>" + annonce.getTelephone() + "</telephone>" 
+					 + "<adresse>" 
+					 	+ "<numero>" + adresse.getNumero() + "</numero>"
+					 	+ "<rue>" + adresse.getRue() + "</rue>"
+					 	+ "<codepostal>" + adresse.getCodePostal() + "</codepostal>"
+					 	+ "<ville>" + adresse.getVille() + "</ville>"
+					 + "</adresse>"
+					 + "</annonce>"; 
+		}
+		resultat += "</liste>";
+		return resultat;
+	}
 	//liste les annonces par ville
 	public String listAnnoncesParVille(String ville){
 		List<Annonce> liste = annonceDao.listerAnnonceVille(ville);
@@ -97,6 +120,7 @@ public class Admin {
 			resultat += "<annonce>"
 					 + "<id>" + annonce.getId() + "</id>"
 					 + "<nom>" + annonce.getName() + "</nom>"
+					 + "<cat>" + annonce.getId_categorie() + "</cat>"
 					 + "<telephone>" + annonce.getTelephone() + "</telephone>" 
 					 + "<adresse>" 
 					 	+ "<numero>" + adresse.getNumero() + "</numero>"
@@ -119,6 +143,7 @@ public class Admin {
 			resultat += "<annonce>"
 					 + "<id>" + annonce.getId() + "</id>"
 					 + "<nom>" + annonce.getName() + "</nom>"
+					 + "<cat>" + annonce.getId_categorie() + "</cat>"
 					 + "<telephone>" + annonce.getTelephone() + "</telephone>" 
 					 + "<adresse>" 
 					 	+ "<numero>" + adresse.getNumero() + "</numero>"
@@ -139,6 +164,7 @@ public class Admin {
 		resultat="<annonce>"
 				 + "<id>" + annonce.getId() + "</id>"
 				 + "<nom>" + annonce.getName() + "</nom>"
+				 + "<cat>" + annonce.getId_categorie() + "</cat>"
 				 + "<telephone>" + annonce.getTelephone() + "</telephone>" 
 				 + "<adresse>" 
 				 	+ "<numero>" + adresse.getNumero() + "</numero>"

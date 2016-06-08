@@ -17,9 +17,10 @@ public class AnnonceDaoImpl implements AnnonceDao {
 	private static final String SQL_INSERT = "INSERT INTO annonce (fk_id_categorie, name, telephone, numero, rue, codepostal, ville) VALUES (?,?,?,?,?,?,?)";
 	private static final String SQL_DELETE = "DELETE FROM annonce WHERE id=?";
 	private static final String SQL_MODIFY = "UPDATE annonce SET fk_id_categorie=?, name=?, telephone=?, numero=?, rue=?, codepostal=?, ville=? WHERE id=?";
-	private static final String SQL_FIND_ANNONCE = "SELECT * FROM annonce WHERE id=?";	
-	private static final String SQL_SELECT_CAT = "SELECT * FROM annonce WHERE fk_id_categorie=?";	
-	private static final String SQL_SELECT_VILLE = "SELECT * FROM annonce WHERE ville=? ORDER BY ville ASC";	
+	private static final String SQL_FIND_ANNONCE = "SELECT * FROM annonce WHERE id=?";
+	private static final String SQL_SELECT = "SELECT * FROM annonce";
+	private static final String SQL_SELECT_CAT = "SELECT * FROM annonce WHERE fk_id_categorie=?";
+	private static final String SQL_SELECT_VILLE = "SELECT * FROM annonce WHERE ville=? ORDER BY ville ASC";
 	private DAOFactory daoFactory;
 	
 	AnnonceDaoImpl( DAOFactory daoFactory ) {
@@ -123,6 +124,30 @@ public class AnnonceDaoImpl implements AnnonceDao {
 	}
 	
 	@Override
+	public List<Annonce> listerAnnonce() throws DAOException {
+		Connection connexion = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        List<Annonce> liste = new ArrayList<Annonce>();
+
+        try {
+            /* Récupération d'une connexion depuis la Factory */
+            connexion = (Connection) daoFactory.getConnection();
+            preparedStatement = getRequetePreparee( connexion, SQL_SELECT, false );
+            resultSet = preparedStatement.executeQuery();
+            /* Parcours de la ligne de données de l'éventuel ResulSet retourné */
+            while ( resultSet.next() ) {
+                liste.add(map( resultSet ));
+            }
+        } catch ( SQLException e ) {
+            throw new DAOException( e );
+        } finally {
+            fermeturesSilencieuses( resultSet, preparedStatement, connexion );
+        }
+		return liste;	
+	}
+	
+	@Override
 	public List<Annonce> listerAnnonce(Long idCategorie) throws DAOException {
 		Connection connexion = null;
         PreparedStatement preparedStatement = null;
@@ -174,6 +199,7 @@ public class AnnonceDaoImpl implements AnnonceDao {
 		Annonce annonce = new Annonce();
 		Adresse adresse = new Adresse();
 		annonce.setId(resultSet.getLong( "id" ));
+		annonce.setId_categorie(resultSet.getLong( "fk_id_categorie" ));
 		annonce.setName(resultSet.getString( "name" ));
 		annonce.setTelephone(resultSet.getLong( "telephone" ));
 		adresse.setNumero(resultSet.getLong("numero"));

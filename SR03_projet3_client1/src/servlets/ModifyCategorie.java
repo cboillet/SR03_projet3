@@ -18,7 +18,6 @@ public class ModifyCategorie extends HttpServlet {
 		Long id = getId(request);
 		AdminProxy adminproxy = new AdminProxy();
         String xmlcat = adminproxy.getCategorie(id);
-		
 		request.setAttribute(ATT_CAT, xmlcat);
 		this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }

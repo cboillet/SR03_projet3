@@ -5,7 +5,7 @@
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 		<link type="text/css" rel="stylesheet" href="../style.css" />
-		<title>Supprimer une catégorie</title>
+		<title>Modifier une catégorie</title>
 	</head>
 	<body>
 		<x:parse var="doc" doc="${categorie}" />

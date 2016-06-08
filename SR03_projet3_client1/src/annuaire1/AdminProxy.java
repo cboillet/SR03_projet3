@@ -110,5 +110,11 @@ public class AdminProxy implements annuaire1.Admin {
     return admin.getAnnonce(annonceID);
   }
   
+  public java.lang.String listAnnonces() throws java.rmi.RemoteException{
+    if (admin == null)
+      _initAdminProxy();
+    return admin.listAnnonces();
+  }
+  
   
 }

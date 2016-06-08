@@ -144,12 +144,30 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
+   <element name="listAnnonces">
+    <complexType/>
+   </element>
+   <element name="listAnnoncesResponse">
+    <complexType>
+     <sequence>
+      <element name="listAnnoncesReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
   </schema>
  </wsdl:types>
 
    <wsdl:message name="supprimerCategorieResponse">
 
       <wsdl:part element="impl:supprimerCategorieResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="listAnnoncesResponse">
+
+      <wsdl:part element="impl:listAnnoncesResponse" name="parameters">
 
       </wsdl:part>
 
@@ -286,6 +304,14 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <wsdl:message name="modifierAnnonceRequest">
 
       <wsdl:part element="impl:modifierAnnonce" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="listAnnoncesRequest">
+
+      <wsdl:part element="impl:listAnnonces" name="parameters">
 
       </wsdl:part>
 
@@ -452,6 +478,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
        </wsdl:input>
 
          <wsdl:output message="impl:getAnnonceResponse" name="getAnnonceResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="listAnnonces">
+
+         <wsdl:input message="impl:listAnnoncesRequest" name="listAnnoncesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:listAnnoncesResponse" name="listAnnoncesResponse">
 
        </wsdl:output>
 
@@ -654,6 +692,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="getAnnonceResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="listAnnonces">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="listAnnoncesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="listAnnoncesResponse">
 
             <wsdlsoap:body use="literal"/>
 

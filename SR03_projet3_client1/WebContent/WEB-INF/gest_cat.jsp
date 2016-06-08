@@ -5,7 +5,7 @@
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 		<link type="text/css" rel="stylesheet" href="../style.css" />
-		<title>Supprimer une catégorie</title>
+		<title>Gestion des catégories</title>
 	</head>
 	<body>
 		<x:parse var="doc" doc="${list_cat}" />
@@ -21,7 +21,7 @@
 		</table>
 		<br><br>
 		<form method="post">
-			<label for="nom">Nom de la catégorie </label><input type="text" name="nom" id="nom" />
+			<label for="nom">Nom de la catégorie </label><input type="text" name="nom" id="nom" /><br>
 			<input type="submit" value="créer" />
 		</form>
 	</body>

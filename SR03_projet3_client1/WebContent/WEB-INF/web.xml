@@ -34,4 +34,29 @@
   	<servlet-name>supprCat</servlet-name>
   	<url-pattern>/supprimer_categorie</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>gestAnn</servlet-name>
+  	<servlet-class>servlets.GestAnnonce</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>gestAnn</servlet-name>
+  	<url-pattern>/gestion_annonce</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>modifAnn</servlet-name>
+  	<servlet-class>servlets.ModifyAnnonce</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>modifAnn</servlet-name>
+  	<url-pattern>/modifier_annonce</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>supprAnn</servlet-name>
+  	<servlet-class>servlets.SupprAnnonce</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>supprAnn</servlet-name>
+  	<url-pattern>/supprimer_annonce</url-pattern>
+  </servlet-mapping>
 </web-app>

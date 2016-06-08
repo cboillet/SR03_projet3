@@ -7,8 +7,8 @@
   <ns1:parameter name="dotNetSoapEncFix" value="true"/>
   <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
   <ns1:parameter name="sendXMLDeclaration" value="true"/>
-  <ns1:parameter name="sendXsiTypes" value="true"/>
   <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
   <ns1:requestFlow>
    <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
     <ns1:parameter name="scope" value="session"/>
@@ -78,7 +78,8 @@
   <ns1:operation name="getAnnonce" qname="ns11:getAnnonce" returnQName="ns11:getAnnonceReturn" returnType="xsd:string" soapAction="" xmlns:ns11="http://annuaire1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    <ns1:parameter qname="ns11:annonceID" type="xsd:long"/>
   </ns1:operation>
-  <ns1:parameter name="allowedMethods" value="supprimerCategorie getCategorie listAnnoncesParVille listAnnoncesParCategorie modifierCategorie supprimerAnnonce creerAnnonce modifierAnnonce listCategories getAnnonce creerCategorie"/>
+  <ns1:operation name="listAnnonces" qname="ns12:listAnnonces" returnQName="ns12:listAnnoncesReturn" returnType="xsd:string" soapAction="" xmlns:ns12="http://annuaire1" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:parameter name="allowedMethods" value="listAnnonces supprimerCategorie getCategorie listAnnoncesParVille listAnnoncesParCategorie modifierCategorie supprimerAnnonce creerAnnonce modifierAnnonce listCategories getAnnonce creerCategorie"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="Admin"/>
   <ns1:parameter name="className" value="annuaire1.Admin"/>

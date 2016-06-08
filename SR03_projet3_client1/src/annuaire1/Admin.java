@@ -19,4 +19,5 @@ public interface Admin extends java.rmi.Remote {
     public java.lang.String listCategories() throws java.rmi.RemoteException;
     public java.lang.String getCategorie(long categorieID) throws java.rmi.RemoteException;
     public java.lang.String getAnnonce(long annonceID) throws java.rmi.RemoteException;
+    public java.lang.String listAnnonces() throws java.rmi.RemoteException;
 }

@@ -9,14 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import annuaire1.AdminProxy;
 
-public class SupprCategorie extends HttpServlet {
-	public static final String GEST_CAT = "/gestion_categorie";
+public class SupprAnnonce extends HttpServlet {
+	public static final String GEST_ANN = "/gestion_annonce";
 	
 	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
 		Long id = getId(request);
 		AdminProxy adminproxy = new AdminProxy();
-        adminproxy.supprimerCategorie(id);
-        response.sendRedirect( request.getContextPath() + GEST_CAT);
+        adminproxy.supprimerAnnonce(id);
+        response.sendRedirect( request.getContextPath() + GEST_ANN);
     }
 	
 	private Long getId(HttpServletRequest request) {

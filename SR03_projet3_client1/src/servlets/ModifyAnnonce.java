@@ -29,11 +29,11 @@ public class ModifyAnnonce extends HttpServlet {
 		Long id = getId(request);
 		String nom = request.getParameter( "nom" );
 		Long cat = Long.valueOf(request.getParameter( "categorie" ));
-		Long tel = Long.valueOf(request.getParameter( "tel" ));
+		String tel = request.getParameter( "tel" );
 		Long numero = Long.valueOf(request.getParameter( "numero" ));
 		String rue = request.getParameter( "rue" );
 		String ville = request.getParameter( "ville" );
-		Long cp = Long.valueOf(request.getParameter( "cp" ));
+		String cp = request.getParameter( "cp" );
 		
 		AdminProxy adminproxy = new AdminProxy();
 		adminproxy.modifierAnnonce(id, nom, tel, cat, numero, rue, cp, ville);

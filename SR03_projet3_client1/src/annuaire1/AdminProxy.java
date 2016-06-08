@@ -80,22 +80,10 @@ public class AdminProxy implements annuaire1.Admin {
     return admin.listAnnoncesParCategorie(categorieID);
   }
   
-  public void creerAnnonce(java.lang.String name, long telephone, long categorieID, long numero, java.lang.String rue, long codePostal, java.lang.String ville) throws java.rmi.RemoteException{
-    if (admin == null)
-      _initAdminProxy();
-    admin.creerAnnonce(name, telephone, categorieID, numero, rue, codePostal, ville);
-  }
-  
   public void supprimerAnnonce(long annonceID) throws java.rmi.RemoteException{
     if (admin == null)
       _initAdminProxy();
     admin.supprimerAnnonce(annonceID);
-  }
-  
-  public void modifierAnnonce(long idAnnonce, java.lang.String name, long telephone, long categorieID, long numero, java.lang.String rue, long codePostal, java.lang.String ville) throws java.rmi.RemoteException{
-    if (admin == null)
-      _initAdminProxy();
-    admin.modifierAnnonce(idAnnonce, name, telephone, categorieID, numero, rue, codePostal, ville);
   }
   
   public java.lang.String getCategorie(long categorieID) throws java.rmi.RemoteException{
@@ -114,6 +102,18 @@ public class AdminProxy implements annuaire1.Admin {
     if (admin == null)
       _initAdminProxy();
     return admin.listAnnonces();
+  }
+  
+  public void creerAnnonce(java.lang.String name, java.lang.String telephone, long categorieID, long numero, java.lang.String rue, java.lang.String codePostal, java.lang.String ville) throws java.rmi.RemoteException{
+    if (admin == null)
+      _initAdminProxy();
+    admin.creerAnnonce(name, telephone, categorieID, numero, rue, codePostal, ville);
+  }
+  
+  public void modifierAnnonce(long idAnnonce, java.lang.String name, java.lang.String telephone, long categorieID, long numero, java.lang.String rue, java.lang.String codePostal, java.lang.String ville) throws java.rmi.RemoteException{
+    if (admin == null)
+      _initAdminProxy();
+    admin.modifierAnnonce(idAnnonce, name, telephone, categorieID, numero, rue, codePostal, ville);
   }
   
   

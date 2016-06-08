@@ -1,4 +1,3 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/xml" prefix="x" %>
 <!docTYPE html>
 <html>
 	<head>
@@ -8,6 +7,9 @@
 		<title>Gestion des annonces</title>
 	</head>
 	<body>
+		<c:import url="navbar.jsp"></c:import>
+		<c:import url="menu.jsp"><c:param name="mode" value="ann"/></c:import>
+		
 		<x:parse var="doc_ann" doc="${list_ann}" />
 		<x:parse var="doc_cat" doc="${list_cat}" />
 		<table border="1">

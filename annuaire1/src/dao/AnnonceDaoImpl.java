@@ -201,10 +201,10 @@ public class AnnonceDaoImpl implements AnnonceDao {
 		annonce.setId(resultSet.getLong( "id" ));
 		annonce.setId_categorie(resultSet.getLong( "fk_id_categorie" ));
 		annonce.setName(resultSet.getString( "name" ));
-		annonce.setTelephone(resultSet.getLong( "telephone" ));
+		annonce.setTelephone(resultSet.getString( "telephone" ));
 		adresse.setNumero(resultSet.getLong("numero"));
 		adresse.setRue(resultSet.getString("rue"));
-		adresse.setCodePostal(resultSet.getLong("codepostal"));
+		adresse.setCodePostal(resultSet.getString("codepostal"));
 		adresse.setVille(resultSet.getString("ville"));
 		annonce.setAdresse(adresse);
 		return annonce;

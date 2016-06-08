@@ -1,4 +1,3 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/xml" prefix="x" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -8,7 +7,10 @@
 		<title>Modifier une annonce</title>
 	</head>
 	<body>
-		<x:parse var="doc_ann" doc="${annonce}" />
+		<c:import url="navbar.jsp"></c:import>
+		<c:import url="menu.jsp"><c:param name="mode" value="ann"/></c:import>
+		
+		<x:parse var="doc_ann" doc="${annonce}" /> 
 		<x:parse var="doc_cat" doc="${list_cat}" />
 		<br><br>
 		<form method="post">

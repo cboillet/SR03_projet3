@@ -58,7 +58,7 @@ public class Admin {
 	
 	
 	/*********** Annonces ***********/
-	public void creerAnnonce(String name, Long telephone, Long categorieID, Long numero, String rue, Long codePostal, String ville){
+	public void creerAnnonce(String name, String telephone, Long categorieID, Long numero, String rue, String codePostal, String ville){
 		Annonce annonce = new Annonce();
 		Adresse adresse = new Adresse();
 		annonce.setName(name);
@@ -71,7 +71,7 @@ public class Admin {
 		annonce.setAdresse(adresse);
 		annonceDao.creer(annonce);
 	}
-	public void modifierAnnonce(Long idAnnonce, String name, Long telephone, Long categorieID, Long numero, String rue, Long codePostal, String ville){
+	public void modifierAnnonce(Long idAnnonce, String name, String telephone, Long categorieID, Long numero, String rue, String codePostal, String ville){
 		Annonce annonce = annonceDao.findAnnonce(idAnnonce);
 		Adresse adresse = annonce.getAdresse();
 		annonce.setName(name);

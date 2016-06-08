@@ -38,11 +38,11 @@
       </operation>
       <operation name="creerAnnonce" qname="operNS:creerAnnonce" xmlns:operNS="http://annuaire1" soapAction="" >
         <parameter qname="pns:name" xmlns:pns="http://annuaire1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
-        <parameter qname="pns:telephone" xmlns:pns="http://annuaire1" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:telephone" xmlns:pns="http://annuaire1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:categorieID" xmlns:pns="http://annuaire1" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:numero" xmlns:pns="http://annuaire1" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:rue" xmlns:pns="http://annuaire1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
-        <parameter qname="pns:codePostal" xmlns:pns="http://annuaire1" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:codePostal" xmlns:pns="http://annuaire1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:ville" xmlns:pns="http://annuaire1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
       <operation name="supprimerAnnonce" qname="operNS:supprimerAnnonce" xmlns:operNS="http://annuaire1" soapAction="" >
@@ -51,11 +51,11 @@
       <operation name="modifierAnnonce" qname="operNS:modifierAnnonce" xmlns:operNS="http://annuaire1" soapAction="" >
         <parameter qname="pns:idAnnonce" xmlns:pns="http://annuaire1" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:name" xmlns:pns="http://annuaire1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
-        <parameter qname="pns:telephone" xmlns:pns="http://annuaire1" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:telephone" xmlns:pns="http://annuaire1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:categorieID" xmlns:pns="http://annuaire1" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:numero" xmlns:pns="http://annuaire1" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:rue" xmlns:pns="http://annuaire1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
-        <parameter qname="pns:codePostal" xmlns:pns="http://annuaire1" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:codePostal" xmlns:pns="http://annuaire1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:ville" xmlns:pns="http://annuaire1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
       <operation name="listCategories" qname="operNS:listCategories" xmlns:operNS="http://annuaire1" returnQName="retNS:listCategoriesReturn" xmlns:retNS="http://annuaire1" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >

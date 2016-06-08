@@ -79,7 +79,7 @@ public class AdminSoapBindingStub extends org.apache.axis.client.Stub implements
         oper.setName("creerAnnonce");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://annuaire1", "name"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://annuaire1", "telephone"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"), long.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://annuaire1", "telephone"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://annuaire1", "categorieID"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"), long.class, false, false);
         oper.addParameter(param);
@@ -87,7 +87,7 @@ public class AdminSoapBindingStub extends org.apache.axis.client.Stub implements
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://annuaire1", "rue"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://annuaire1", "codePostal"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"), long.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://annuaire1", "codePostal"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://annuaire1", "ville"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
@@ -111,7 +111,7 @@ public class AdminSoapBindingStub extends org.apache.axis.client.Stub implements
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://annuaire1", "name"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://annuaire1", "telephone"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"), long.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://annuaire1", "telephone"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://annuaire1", "categorieID"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"), long.class, false, false);
         oper.addParameter(param);
@@ -119,7 +119,7 @@ public class AdminSoapBindingStub extends org.apache.axis.client.Stub implements
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://annuaire1", "rue"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://annuaire1", "codePostal"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"), long.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://annuaire1", "codePostal"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://annuaire1", "ville"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
@@ -375,7 +375,7 @@ public class AdminSoapBindingStub extends org.apache.axis.client.Stub implements
 }
     }
 
-    public void creerAnnonce(java.lang.String name, long telephone, long categorieID, long numero, java.lang.String rue, long codePostal, java.lang.String ville) throws java.rmi.RemoteException {
+    public void creerAnnonce(java.lang.String name, java.lang.String telephone, long categorieID, long numero, java.lang.String rue, java.lang.String codePostal, java.lang.String ville) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -391,7 +391,7 @@ public class AdminSoapBindingStub extends org.apache.axis.client.Stub implements
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {name, new java.lang.Long(telephone), new java.lang.Long(categorieID), new java.lang.Long(numero), rue, new java.lang.Long(codePostal), ville});
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {name, telephone, new java.lang.Long(categorieID), new java.lang.Long(numero), rue, codePostal, ville});
 
         if (_resp instanceof java.rmi.RemoteException) {
             throw (java.rmi.RemoteException)_resp;
@@ -429,7 +429,7 @@ public class AdminSoapBindingStub extends org.apache.axis.client.Stub implements
 }
     }
 
-    public void modifierAnnonce(long idAnnonce, java.lang.String name, long telephone, long categorieID, long numero, java.lang.String rue, long codePostal, java.lang.String ville) throws java.rmi.RemoteException {
+    public void modifierAnnonce(long idAnnonce, java.lang.String name, java.lang.String telephone, long categorieID, long numero, java.lang.String rue, java.lang.String codePostal, java.lang.String ville) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -445,7 +445,7 @@ public class AdminSoapBindingStub extends org.apache.axis.client.Stub implements
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Long(idAnnonce), name, new java.lang.Long(telephone), new java.lang.Long(categorieID), new java.lang.Long(numero), rue, new java.lang.Long(codePostal), ville});
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Long(idAnnonce), name, telephone, new java.lang.Long(categorieID), new java.lang.Long(numero), rue, codePostal, ville});
 
         if (_resp instanceof java.rmi.RemoteException) {
             throw (java.rmi.RemoteException)_resp;

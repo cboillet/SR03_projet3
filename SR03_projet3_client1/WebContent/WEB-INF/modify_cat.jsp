@@ -1,4 +1,3 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/xml" prefix="x" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -8,6 +7,9 @@
 		<title>Modifier une catégorie</title>
 	</head>
 	<body>
+		<c:import url="navbar.jsp"></c:import>
+		<c:import url="menu.jsp"><c:param name="mode" value="cat"/></c:import>
+		
 		<x:parse var="doc" doc="${categorie}" />
 		<br><br>
 		<form method="post">

@@ -4,7 +4,7 @@ public class Adresse {
 	private Long numero;
 	private String rue;
 	private String ville;
-	private Long codePostal;
+	private String codePostal;
 	
 	public Long getNumero() {
 		return numero;
@@ -24,10 +24,10 @@ public class Adresse {
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
-	public Long getCodePostal() {
+	public String getCodePostal() {
 		return codePostal;
 	}
-	public void setCodePostal(Long codePostal) {
+	public void setCodePostal(String codePostal) {
 		this.codePostal = codePostal;
 	}
 }

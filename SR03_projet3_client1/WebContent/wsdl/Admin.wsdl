@@ -67,11 +67,11 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     <complexType>
      <sequence>
       <element name="name" type="xsd:string"/>
-      <element name="telephone" type="xsd:long"/>
+      <element name="telephone" type="xsd:string"/>
       <element name="categorieID" type="xsd:long"/>
       <element name="numero" type="xsd:long"/>
       <element name="rue" type="xsd:string"/>
-      <element name="codePostal" type="xsd:long"/>
+      <element name="codePostal" type="xsd:string"/>
       <element name="ville" type="xsd:string"/>
      </sequence>
     </complexType>
@@ -94,11 +94,11 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      <sequence>
       <element name="idAnnonce" type="xsd:long"/>
       <element name="name" type="xsd:string"/>
-      <element name="telephone" type="xsd:long"/>
+      <element name="telephone" type="xsd:string"/>
       <element name="categorieID" type="xsd:long"/>
       <element name="numero" type="xsd:long"/>
       <element name="rue" type="xsd:string"/>
-      <element name="codePostal" type="xsd:long"/>
+      <element name="codePostal" type="xsd:string"/>
       <element name="ville" type="xsd:string"/>
      </sequence>
     </complexType>

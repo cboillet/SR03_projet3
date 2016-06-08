@@ -87,10 +87,33 @@ public class Admin {
 	public void supprimerAnnonce(Long annonceID){
 		annonceDao.delete(annonceID);
 	}
-	//liste les catégories
+	//liste les annonces
 	public String listAnnonces(){
 		List<Annonce> liste = annonceDao.listerAnnonce();
 		String resultat="<liste>";
+		Adresse adresse;
+		for(Annonce annonce : liste){
+			adresse = annonce.getAdresse();
+			resultat += "<annonce>"
+					 + "<id>" + annonce.getId() + "</id>"
+					 + "<nom>" + annonce.getName() + "</nom>"
+					 + "<cat>" + annonce.getId_categorie() + "</cat>"
+					 + "<telephone>" + annonce.getTelephone() + "</telephone>" 
+					 + "<adresse>" 
+					 	+ "<numero>" + adresse.getNumero() + "</numero>"
+					 	+ "<rue>" + adresse.getRue() + "</rue>"
+					 	+ "<codepostal>" + adresse.getCodePostal() + "</codepostal>"
+					 	+ "<ville>" + adresse.getVille() + "</ville>"
+					 + "</adresse>"
+					 + "</annonce>"; 
+		}
+		resultat += "</liste>";
+		return resultat;
+	}
+	//liste les annonces par ville
+	public String listAnnoncesParNom(String nom){
+		List<Annonce> liste = annonceDao.listerAnnonceNom(nom);
+		String resultat = "<liste>";
 		Adresse adresse;
 		for(Annonce annonce : liste){
 			adresse = annonce.getAdresse();
@@ -135,7 +158,7 @@ public class Admin {
 	}
 	//liste les annonces par catégorie
 	public String listAnnoncesParCategorie(Long categorieID){
-		List<Annonce> liste = annonceDao.listerAnnonce(categorieID);
+		List<Annonce> liste = annonceDao.listerAnnonceCat(categorieID);
 		String resultat = "<liste>";
 		Adresse adresse;
 		for(Annonce annonce : liste){

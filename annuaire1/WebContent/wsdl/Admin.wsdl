@@ -154,8 +154,118 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
+   <element name="listAnnoncesParNom">
+    <complexType>
+     <sequence>
+      <element name="nom" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="listAnnoncesParNomResponse">
+    <complexType>
+     <sequence>
+      <element name="listAnnoncesParNomReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
   </schema>
  </wsdl:types>
+
+   <wsdl:message name="listAnnoncesParNomRequest">
+
+      <wsdl:part element="impl:listAnnoncesParNom" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="listAnnoncesParNomResponse">
+
+      <wsdl:part element="impl:listAnnoncesParNomResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="modifierCategorieRequest">
+
+      <wsdl:part element="impl:modifierCategorie" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCategorieResponse">
+
+      <wsdl:part element="impl:getCategorieResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="listCategoriesResponse">
+
+      <wsdl:part element="impl:listCategoriesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="supprimerCategorieRequest">
+
+      <wsdl:part element="impl:supprimerCategorie" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="modifierCategorieResponse">
+
+      <wsdl:part element="impl:modifierCategorieResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="supprimerAnnonceRequest">
+
+      <wsdl:part element="impl:supprimerAnnonce" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="listAnnoncesParVilleResponse">
+
+      <wsdl:part element="impl:listAnnoncesParVilleResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="modifierAnnonceResponse">
+
+      <wsdl:part element="impl:modifierAnnonceResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="modifierAnnonceRequest">
+
+      <wsdl:part element="impl:modifierAnnonce" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAnnonceResponse">
+
+      <wsdl:part element="impl:getAnnonceResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
 
    <wsdl:message name="supprimerCategorieResponse">
 
@@ -189,14 +299,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="modifierCategorieRequest">
-
-      <wsdl:part element="impl:modifierCategorie" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
    <wsdl:message name="getCategorieRequest">
 
       <wsdl:part element="impl:getCategorie" name="parameters">
@@ -221,57 +323,9 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="getCategorieResponse">
-
-      <wsdl:part element="impl:getCategorieResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="listCategoriesResponse">
-
-      <wsdl:part element="impl:listCategoriesResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="supprimerCategorieRequest">
-
-      <wsdl:part element="impl:supprimerCategorie" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
    <wsdl:message name="listAnnoncesParCategorieRequest">
 
       <wsdl:part element="impl:listAnnoncesParCategorie" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="modifierCategorieResponse">
-
-      <wsdl:part element="impl:modifierCategorieResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="supprimerAnnonceRequest">
-
-      <wsdl:part element="impl:supprimerAnnonce" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="listAnnoncesParVilleResponse">
-
-      <wsdl:part element="impl:listAnnoncesParVilleResponse" name="parameters">
 
       </wsdl:part>
 
@@ -293,22 +347,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="modifierAnnonceResponse">
-
-      <wsdl:part element="impl:modifierAnnonceResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="modifierAnnonceRequest">
-
-      <wsdl:part element="impl:modifierAnnonce" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
    <wsdl:message name="listAnnoncesRequest">
 
       <wsdl:part element="impl:listAnnonces" name="parameters">
@@ -320,14 +358,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <wsdl:message name="creerAnnonceResponse">
 
       <wsdl:part element="impl:creerAnnonceResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="getAnnonceResponse">
-
-      <wsdl:part element="impl:getAnnonceResponse" name="parameters">
 
       </wsdl:part>
 
@@ -490,6 +520,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
        </wsdl:input>
 
          <wsdl:output message="impl:listAnnoncesResponse" name="listAnnoncesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="listAnnoncesParNom">
+
+         <wsdl:input message="impl:listAnnoncesParNomRequest" name="listAnnoncesParNomRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:listAnnoncesParNomResponse" name="listAnnoncesParNomResponse">
 
        </wsdl:output>
 
@@ -710,6 +752,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="listAnnoncesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="listAnnoncesParNom">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="listAnnoncesParNomRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="listAnnoncesParNomResponse">
 
             <wsdlsoap:body use="literal"/>
 

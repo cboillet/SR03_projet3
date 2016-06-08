@@ -68,7 +68,10 @@
       </operation>
       <operation name="listAnnonces" qname="operNS:listAnnonces" xmlns:operNS="http://annuaire1" returnQName="retNS:listAnnoncesReturn" xmlns:retNS="http://annuaire1" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
       </operation>
-      <parameter name="allowedMethods" value="listAnnonces supprimerCategorie getCategorie listAnnoncesParVille listAnnoncesParCategorie modifierCategorie supprimerAnnonce creerAnnonce modifierAnnonce listCategories getAnnonce creerCategorie"/>
+      <operation name="listAnnoncesParNom" qname="operNS:listAnnoncesParNom" xmlns:operNS="http://annuaire1" returnQName="retNS:listAnnoncesParNomReturn" xmlns:retNS="http://annuaire1" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:nom" xmlns:pns="http://annuaire1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="supprimerCategorie getCategorie listAnnoncesParNom listAnnoncesParVille modifierCategorie supprimerAnnonce creerAnnonce listCategories getAnnonce listAnnonces listAnnoncesParCategorie modifierAnnonce creerCategorie"/>
 
   </service>
 </deployment>

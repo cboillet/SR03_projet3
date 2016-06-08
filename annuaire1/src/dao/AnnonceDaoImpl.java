@@ -20,7 +20,8 @@ public class AnnonceDaoImpl implements AnnonceDao {
 	private static final String SQL_FIND_ANNONCE = "SELECT * FROM annonce WHERE id=?";
 	private static final String SQL_SELECT = "SELECT * FROM annonce";
 	private static final String SQL_SELECT_CAT = "SELECT * FROM annonce WHERE fk_id_categorie=?";
-	private static final String SQL_SELECT_VILLE = "SELECT * FROM annonce WHERE ville=? ORDER BY ville ASC";
+	private static final String SQL_SELECT_VILLE = "SELECT * FROM annonce WHERE ville LIKE ? ORDER BY ville ASC";
+	private static final String SQL_SELECT_NOM = "SELECT * FROM annonce WHERE name LIKE ? ORDER BY name ASC";
 	private DAOFactory daoFactory;
 	
 	AnnonceDaoImpl( DAOFactory daoFactory ) {
@@ -148,7 +149,7 @@ public class AnnonceDaoImpl implements AnnonceDao {
 	}
 	
 	@Override
-	public List<Annonce> listerAnnonce(Long idCategorie) throws DAOException {
+	public List<Annonce> listerAnnonceCat(Long idCategorie) throws DAOException {
 		Connection connexion = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -181,7 +182,31 @@ public class AnnonceDaoImpl implements AnnonceDao {
         try {
             /* Récupération d'une connexion depuis la Factory */
             connexion = (Connection) daoFactory.getConnection();
-            preparedStatement = getRequetePreparee( connexion, SQL_SELECT_VILLE, false, ville );
+            preparedStatement = getRequetePreparee( connexion, SQL_SELECT_VILLE, false, '%'+ville+'%' );
+            resultSet = preparedStatement.executeQuery();
+            /* Parcours de la ligne de données de l'éventuel ResulSet retourné */
+            while ( resultSet.next() ) {
+                liste.add(map( resultSet ));
+            }
+        } catch ( SQLException e ) {
+            throw new DAOException( e );
+        } finally {
+            fermeturesSilencieuses( resultSet, preparedStatement, connexion );
+        }
+		return liste;	
+	}
+	
+	@Override
+	public List<Annonce> listerAnnonceNom(String nom) throws DAOException {
+		Connection connexion = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        List<Annonce> liste = new ArrayList<Annonce>();
+
+        try {
+            /* Récupération d'une connexion depuis la Factory */
+            connexion = (Connection) daoFactory.getConnection();
+            preparedStatement = getRequetePreparee( connexion, SQL_SELECT_NOM, false, '%'+nom+'%' );
             resultSet = preparedStatement.executeQuery();
             /* Parcours de la ligne de données de l'éventuel ResulSet retourné */
             while ( resultSet.next() ) {

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>SR03_projet3_client2</display-name>
+  <jsp-config>
+    <jsp-property-group>
+      <url-pattern>*.jsp</url-pattern>
+      <include-prelude>/WEB-INF/taglibs.jsp</include-prelude>
+    </jsp-property-group>
+  </jsp-config>
+  
+  <servlet>
+  	<servlet-name>byName</servlet-name>
+  	<servlet-class>servlets.FindByName</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>byName</servlet-name>
+  	<url-pattern>/par_nom</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>byVille</servlet-name>
+  	<servlet-class>servlets.FindByVille</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>byVille</servlet-name>
+  	<url-pattern>/par_ville</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>byCat</servlet-name>
+  	<servlet-class>servlets.FindByCat</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>byCat</servlet-name>
+  	<url-pattern>/par_categorie</url-pattern>
+  </servlet-mapping>
+</web-app>

@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<c:import url="navbar.jsp"></c:import>
-		<c:import url="menu.jsp"><c:param name="mode" value="ann"/></c:import>
+		<c:import url="menu.jsp"><c:param name="mode" value="ann"/></c:import> 
 		
 		<x:parse var="doc_ann" doc="${annonce}" /> 
 		<x:parse var="doc_cat" doc="${list_cat}" />

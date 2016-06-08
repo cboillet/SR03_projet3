@@ -15,7 +15,7 @@ public class GestCategorie extends HttpServlet {
 	
 	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
 		AdminProxy adminproxy = new AdminProxy();
-        String xmlcat = "<liste><categorie><id>1</id><nom>categorie1</nom></categorie><categorie><id>2</id><nom>categorie2</nom></categorie></liste>";//adminproxy.listCategorie();
+        String xmlcat = adminproxy.listCategories();
         request.setAttribute(ATT_CAT_LIST, xmlcat);
 		this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
@@ -25,7 +25,7 @@ public class GestCategorie extends HttpServlet {
         AdminProxy adminproxy = new AdminProxy();
         adminproxy.creerCategorie(nom);
         
-        String xmlcat = "<liste><categorie><id>1</id><nom>categorie1</nom></categorie><categorie><id>2</id><nom>categorie2</nom></categorie></liste>";//adminproxy.listCategorie();
+        String xmlcat = adminproxy.listCategories();
         request.setAttribute(ATT_CAT_LIST, xmlcat);
         
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );

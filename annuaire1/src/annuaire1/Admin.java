@@ -14,66 +14,83 @@ public class Admin {
 	private CategorieDao categorieDao;
 	private AnnonceDao annonceDao;
 	
-	public void Admin(){
+	public Admin(){
 		this.categorieDao = DAOFactory.getInstance().getCategorieDao();
+		this.annonceDao = DAOFactory.getInstance().getAnnonceDao();
 	}
 	
-	/*Categorie*/
+	/*********** Catégories ***********/
 	public void creerCategorie(String name){
-		categorieDao = DAOFactory.getInstance().getCategorieDao();
 		Categorie categorie = new Categorie();
 		categorie.setName(name);
-		System.out.println("nome de la categorie ajoutée" + categorie.getName());
 		categorieDao.creer(categorie);
 	}
 	public void modifierCategorie(Long categorieID, String newName){
-		categorieDao = DAOFactory.getInstance().getCategorieDao();
-		Categorie categorie = categorieDao.findCategorie(categorieID);
+		Categorie categorie = new Categorie();
+		categorie.setId(categorieID);
 		categorie.setName(newName);
-		System.out.println("Numero de la categorie" + categorie.getId());
 		categorieDao.modify(categorie);
 	}
-	
 	public void supprimerCategorie(Long categorieID){
-		categorieDao = DAOFactory.getInstance().getCategorieDao();
 		categorieDao.delete(categorieID);
 	}
-	
-	/*Annonces*/
-	public void creerAnnonce(Long categorieID, String nameAnnonce){
-		categorieDao = DAOFactory.getInstance().getCategorieDao();
-		annonceDao = DAOFactory.getInstance().getAnnonceDao();
+	//liste les catégories
+	public String listCategories(){
+		List<Categorie> liste = categorieDao.listerCategorie();
+		String resultat="<liste>";
+		for(Categorie categorie : liste){
+			resultat += "<categorie>"
+					 + "<id>" + categorie.getId() + "</id>"
+					 + "<nom>" + categorie.getName() + "</nom>"
+					 + "</categorie>"; 
+		}
+		resultat += "</liste>";
+		return resultat;
+	}
+	//récupère une catégorie par son ID
+	public String getCategorie(Long categorieID){
 		Categorie categorie = categorieDao.findCategorie(categorieID);
-		Annonce annonce = new Annonce();
-		annonce.setName(nameAnnonce);
-		annonceDao.creer(categorie.getId(), annonce);		
-	}
-	public void supprimerAnnonce(String annonceName){
-		annonceDao = DAOFactory.getInstance().getAnnonceDao();
-		annonceDao.delete(annonceName);
+		return "<categorie>"
+		 + "<id>" + categorie.getId() + "</id>"
+		 + "<nom>" + categorie.getName() + "</nom>"
+		 + "</categorie>"; 
 	}
 	
-	public void modifierAnnonce(Long idAnnonce, String name, Long telephone, Long numero, String rue, Long codePostal, String ville){
-		annonceDao = DAOFactory.getInstance().getAnnonceDao();
+	
+	/*********** Annonces ***********/
+	public void creerAnnonce(String name, Long telephone, Long categorieID, Long numero, String rue, Long codePostal, String ville){
+		Annonce annonce = new Annonce();
+		Adresse adresse = new Adresse();
+		annonce.setName(name);
+		annonce.setTelephone(telephone);
+		annonce.setId_categorie(categorieID);
+		adresse.setNumero(numero);
+		adresse.setRue(rue);
+		adresse.setCodePostal(codePostal);
+		adresse.setVille(ville);
+		annonce.setAdresse(adresse);
+		annonceDao.creer(annonce);
+	}
+	public void modifierAnnonce(Long idAnnonce, String name, Long telephone, Long categorieID, Long numero, String rue, Long codePostal, String ville){
 		Annonce annonce = annonceDao.findAnnonce(idAnnonce);
 		Adresse adresse = annonce.getAdresse();
-		System.out.println("Annonce à modifier" + annonce.getName());
-		
-		if(name != null && !name.isEmpty()){annonce.setName(name);}
-		if(telephone != null){annonce.setTelephone(telephone);}
-		if(numero != null){adresse.setNumero(numero);}
-		if(rue != null && !rue.isEmpty()){ System.out.println("Test rue"); adresse.setRue(rue);}
-		if(codePostal!=null){adresse.setCodePostal(codePostal);}
-		if(ville != null && !ville.isEmpty()){adresse.setVille(ville);}
+		annonce.setName(name);
+		annonce.setTelephone(telephone);
+		annonce.setId_categorie(categorieID);
+		adresse.setNumero(numero);
+		adresse.setRue(rue);
+		adresse.setCodePostal(codePostal);
+		adresse.setVille(ville);
 		annonce.setAdresse(adresse);
 		annonceDao.modify(annonce);
 	}
-	
-	/*Affichage classement par ville*/
-	public String afficherAdresse(String ville){
-		annonceDao = DAOFactory.getInstance().getAnnonceDao();
+	public void supprimerAnnonce(Long annonceID){
+		annonceDao.delete(annonceID);
+	}
+	//liste les annonces par ville
+	public String listAnnoncesParVille(String ville){
 		List<Annonce> liste = annonceDao.listerAnnonceVille(ville);
-		String resultat = "";
+		String resultat = "<liste>";
 		Adresse adresse;
 		for(Annonce annonce : liste){
 			adresse = annonce.getAdresse();
@@ -89,12 +106,13 @@ public class Admin {
 					 + "</adresse>"
 					 + "</annonce>"; 
 		}
+		resultat += "</liste>";
 		return resultat;
 	}
-	public String listAnnonces(Long categorieID){
-		annonceDao = DAOFactory.getInstance().getAnnonceDao();
+	//liste les annonces par catégorie
+	public String listAnnoncesParCategorie(Long categorieID){
 		List<Annonce> liste = annonceDao.listerAnnonce(categorieID);
-		String resultat = "";
+		String resultat = "<liste>";
 		Adresse adresse;
 		for(Annonce annonce : liste){
 			adresse = annonce.getAdresse();
@@ -110,12 +128,12 @@ public class Admin {
 					 + "</adresse>"
 					 + "</annonce>"; 
 		}
-		
+		resultat += "</liste>";
 		return resultat;
 	}
-	public String afficherAnnonce(Long annonceID){
+	//récupère une annonce par son ID
+	public String getAnnonce(Long annonceID){
 		String resultat;
-		annonceDao = DAOFactory.getInstance().getAnnonceDao();
 		Annonce annonce = annonceDao.findAnnonce(annonceID);
 		Adresse adresse = annonce.getAdresse();
 		resultat="<annonce>"
@@ -129,27 +147,6 @@ public class Admin {
 				 	+ "<ville>" + adresse.getVille() + "</ville>"
 				 + "</adresse>"
 				 + "</annonce>"; 
-		return resultat;
-	}
-	public String afficherCategorie(Long categorieID){
-		categorieDao = DAOFactory.getInstance().getCategorieDao();
-		Categorie categorie = categorieDao.findCategorie(categorieID);
-
-		return "<categorie>"
-		 + "<id>" + categorie.getId() + "</id>"
-		 + "<nom>" + categorie.getName() + "</nom>"
-		 + "</categorie>"; 
-	}
-	public String listCategories(){
-		categorieDao = DAOFactory.getInstance().getCategorieDao();
-		List<Categorie> liste = categorieDao.listerCategorie();
-		String resultat="";
-		for(Categorie categorie : liste){
-			resultat += "<categorie>"
-					 + "<id>" + categorie.getId() + "</id>"
-					 + "<nom>" + categorie.getName() + "</nom>"
-					 + "</categorie>"; 
-		}
 		return resultat;
 	}
 }

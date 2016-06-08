@@ -9,7 +9,7 @@ public class TestAdmin {
 	
 	public static void main(String[] args){
 		admin = new Admin();
-		String resultat= admin.afficherAdresse("Compiegne");
+		String resultat= admin.listAnnoncesParVille("Compiegne");
 		System.out.println(resultat);
 	}
 }

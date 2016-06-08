@@ -22,7 +22,7 @@ public class AdminServiceLocator extends org.apache.axis.client.Service implemen
     }
 
     // Use to get a proxy class for Admin
-    private java.lang.String Admin_address = "http://localhost:8080/SR03_projet3/services/Admin";
+    private java.lang.String Admin_address = "http://localhost:8080/SR03_projet3_Webservice/services/Admin";
 
     public java.lang.String getAdminAddress() {
         return Admin_address;

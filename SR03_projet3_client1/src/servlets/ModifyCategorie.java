@@ -17,7 +17,7 @@ public class ModifyCategorie extends HttpServlet {
 	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
 		Long id = getId(request);
 		AdminProxy adminproxy = new AdminProxy();
-        String xmlcat = "<categorie><id>1</id><nom>Categorie1</nom></categorie>";//adminproxy.getCategorieById(id);
+        String xmlcat = adminproxy.getCategorie(id);
 		
 		request.setAttribute(ATT_CAT, xmlcat);
 		this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
@@ -28,7 +28,7 @@ public class ModifyCategorie extends HttpServlet {
 		String nom = request.getParameter( "nom" );
 		
 		AdminProxy adminproxy = new AdminProxy();
-		//adminproxy.modifierCategorie(id, nom);
+		adminproxy.modifierCategorie(id, nom);
 		
 		response.sendRedirect( request.getContextPath() + GEST_CAT);
     }

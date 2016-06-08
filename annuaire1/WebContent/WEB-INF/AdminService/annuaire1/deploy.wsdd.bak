@@ -20,22 +20,53 @@
       <parameter name="className" value="annuaire1.AdminSoapBindingImpl"/>
       <parameter name="wsdlPortType" value="Admin"/>
       <parameter name="typeMappingVersion" value="1.2"/>
-      <operation name="ajouterAnnonce" qname="operNS:ajouterAnnonce" xmlns:operNS="http://annuaire1" soapAction="" >
-        <parameter qname="pns:nameCategorie" xmlns:pns="http://annuaire1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
-        <parameter qname="pns:nameAnnonce" xmlns:pns="http://annuaire1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
-      </operation>
-      <operation name="modifierAnnonce" qname="operNS:modifierAnnonce" xmlns:operNS="http://annuaire1" soapAction="" >
+      <operation name="supprimerCategorie" qname="operNS:supprimerCategorie" xmlns:operNS="http://annuaire1" soapAction="" >
+        <parameter qname="pns:categorieID" xmlns:pns="http://annuaire1" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
       <operation name="modifierCategorie" qname="operNS:modifierCategorie" xmlns:operNS="http://annuaire1" soapAction="" >
+        <parameter qname="pns:categorieID" xmlns:pns="http://annuaire1" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:newName" xmlns:pns="http://annuaire1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
-      <operation name="afficherAdresse" qname="operNS:afficherAdresse" xmlns:operNS="http://annuaire1" soapAction="" >
+      <operation name="listAnnoncesParVille" qname="operNS:listAnnoncesParVille" xmlns:operNS="http://annuaire1" returnQName="retNS:listAnnoncesParVilleReturn" xmlns:retNS="http://annuaire1" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:ville" xmlns:pns="http://annuaire1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="listAnnoncesParCategorie" qname="operNS:listAnnoncesParCategorie" xmlns:operNS="http://annuaire1" returnQName="retNS:listAnnoncesParCategorieReturn" xmlns:retNS="http://annuaire1" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:categorieID" xmlns:pns="http://annuaire1" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
       <operation name="creerCategorie" qname="operNS:creerCategorie" xmlns:operNS="http://annuaire1" soapAction="" >
         <parameter qname="pns:name" xmlns:pns="http://annuaire1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
-      <operation name="supprimerAnnonce" qname="operNS:supprimerAnnonce" xmlns:operNS="http://annuaire1" soapAction="" >
+      <operation name="creerAnnonce" qname="operNS:creerAnnonce" xmlns:operNS="http://annuaire1" soapAction="" >
+        <parameter qname="pns:name" xmlns:pns="http://annuaire1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:telephone" xmlns:pns="http://annuaire1" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:categorieID" xmlns:pns="http://annuaire1" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:numero" xmlns:pns="http://annuaire1" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:rue" xmlns:pns="http://annuaire1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:codePostal" xmlns:pns="http://annuaire1" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:ville" xmlns:pns="http://annuaire1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
-      <parameter name="allowedMethods" value="modifierCategorie supprimerAnnonce modifierAnnonce afficherAdresse creerCategorie ajouterAnnonce"/>
+      <operation name="supprimerAnnonce" qname="operNS:supprimerAnnonce" xmlns:operNS="http://annuaire1" soapAction="" >
+        <parameter qname="pns:annonceID" xmlns:pns="http://annuaire1" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="modifierAnnonce" qname="operNS:modifierAnnonce" xmlns:operNS="http://annuaire1" soapAction="" >
+        <parameter qname="pns:idAnnonce" xmlns:pns="http://annuaire1" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:name" xmlns:pns="http://annuaire1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:telephone" xmlns:pns="http://annuaire1" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:categorieID" xmlns:pns="http://annuaire1" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:numero" xmlns:pns="http://annuaire1" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:rue" xmlns:pns="http://annuaire1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:codePostal" xmlns:pns="http://annuaire1" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:ville" xmlns:pns="http://annuaire1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="listCategories" qname="operNS:listCategories" xmlns:operNS="http://annuaire1" returnQName="retNS:listCategoriesReturn" xmlns:retNS="http://annuaire1" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="getCategorie" qname="operNS:getCategorie" xmlns:operNS="http://annuaire1" returnQName="retNS:getCategorieReturn" xmlns:retNS="http://annuaire1" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:categorieID" xmlns:pns="http://annuaire1" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getAnnonce" qname="operNS:getAnnonce" xmlns:operNS="http://annuaire1" returnQName="retNS:getAnnonceReturn" xmlns:retNS="http://annuaire1" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:annonceID" xmlns:pns="http://annuaire1" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="supprimerCategorie getCategorie listAnnoncesParVille listAnnoncesParCategorie modifierCategorie supprimerAnnonce creerAnnonce modifierAnnonce listCategories getAnnonce creerCategorie"/>
 
   </service>
 </deployment>

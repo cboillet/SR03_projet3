@@ -15,7 +15,7 @@ public class SupprCategorie extends HttpServlet {
 	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
 		Long id = getId(request);
 		AdminProxy adminproxy = new AdminProxy();
-        //adminproxy.supprimerCategorie(id);
+        adminproxy.supprimerCategorie(id);
         
         response.sendRedirect( request.getContextPath() + GEST_CAT);
     }

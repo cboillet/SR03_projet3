@@ -33,18 +33,52 @@
   <ns1:parameter name="className" value="org.apache.axis.Version"/>
  </ns1:service>
  <ns1:service name="Admin" provider="java:RPC" style="wrapped" use="literal">
-  <ns2:operation name="ajouterAnnonce" qname="ns1:ajouterAnnonce" soapAction="" xmlns:ns1="http://annuaire1" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
-   <ns2:parameter qname="ns1:nameCategorie" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
-   <ns2:parameter qname="ns1:nameAnnonce" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns2:operation name="supprimerCategorie" qname="ns1:supprimerCategorie" soapAction="" xmlns:ns1="http://annuaire1" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns2:parameter qname="ns1:categorieID" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
   </ns2:operation>
-  <ns1:operation name="modifierAnnonce" qname="ns2:modifierAnnonce" soapAction="" xmlns:ns2="http://annuaire1"/>
-  <ns1:operation name="modifierCategorie" qname="ns3:modifierCategorie" soapAction="" xmlns:ns3="http://annuaire1"/>
-  <ns1:operation name="afficherAdresse" qname="ns4:afficherAdresse" soapAction="" xmlns:ns4="http://annuaire1"/>
+  <ns1:operation name="modifierCategorie" qname="ns2:modifierCategorie" soapAction="" xmlns:ns2="http://annuaire1">
+   <ns1:parameter qname="ns2:categorieID" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns2:newName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="listAnnoncesParVille" qname="ns3:listAnnoncesParVille" returnQName="ns3:listAnnoncesParVilleReturn" returnType="xsd:string" soapAction="" xmlns:ns3="http://annuaire1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns3:ville" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="listAnnoncesParCategorie" qname="ns4:listAnnoncesParCategorie" returnQName="ns4:listAnnoncesParCategorieReturn" returnType="xsd:string" soapAction="" xmlns:ns4="http://annuaire1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns4:categorieID" type="xsd:long"/>
+  </ns1:operation>
   <ns1:operation name="creerCategorie" qname="ns5:creerCategorie" soapAction="" xmlns:ns5="http://annuaire1">
    <ns1:parameter qname="ns5:name" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
   </ns1:operation>
-  <ns1:operation name="supprimerAnnonce" qname="ns6:supprimerAnnonce" soapAction="" xmlns:ns6="http://annuaire1"/>
-  <ns1:parameter name="allowedMethods" value="modifierCategorie supprimerAnnonce modifierAnnonce afficherAdresse creerCategorie ajouterAnnonce"/>
+  <ns1:operation name="creerAnnonce" qname="ns6:creerAnnonce" soapAction="" xmlns:ns6="http://annuaire1">
+   <ns1:parameter qname="ns6:name" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns6:telephone" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns6:categorieID" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns6:numero" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns6:rue" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns6:codePostal" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns6:ville" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="supprimerAnnonce" qname="ns7:supprimerAnnonce" soapAction="" xmlns:ns7="http://annuaire1">
+   <ns1:parameter qname="ns7:annonceID" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="modifierAnnonce" qname="ns8:modifierAnnonce" soapAction="" xmlns:ns8="http://annuaire1">
+   <ns1:parameter qname="ns8:idAnnonce" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns8:name" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns8:telephone" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns8:categorieID" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns8:numero" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns8:rue" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns8:codePostal" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns8:ville" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="listCategories" qname="ns9:listCategories" returnQName="ns9:listCategoriesReturn" returnType="xsd:string" soapAction="" xmlns:ns9="http://annuaire1" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="getCategorie" qname="ns10:getCategorie" returnQName="ns10:getCategorieReturn" returnType="xsd:string" soapAction="" xmlns:ns10="http://annuaire1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns10:categorieID" type="xsd:long"/>
+  </ns1:operation>
+  <ns1:operation name="getAnnonce" qname="ns11:getAnnonce" returnQName="ns11:getAnnonceReturn" returnType="xsd:string" soapAction="" xmlns:ns11="http://annuaire1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns11:annonceID" type="xsd:long"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="supprimerCategorie getCategorie listAnnoncesParVille listAnnoncesParCategorie modifierCategorie supprimerAnnonce creerAnnonce modifierAnnonce listCategories getAnnonce creerCategorie"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="Admin"/>
   <ns1:parameter name="className" value="annuaire1.Admin"/>

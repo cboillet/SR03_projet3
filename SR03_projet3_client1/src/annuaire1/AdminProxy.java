@@ -44,40 +44,16 @@ public class AdminProxy implements annuaire1.Admin {
     return admin;
   }
   
-  public void supprimerAnnonce() throws java.rmi.RemoteException{
+  public void supprimerCategorie(long categorieID) throws java.rmi.RemoteException{
     if (admin == null)
       _initAdminProxy();
-    admin.supprimerAnnonce();
+    admin.supprimerCategorie(categorieID);
   }
   
-  public java.lang.String afficherAdresse() throws java.rmi.RemoteException{
+  public void modifierCategorie(long categorieID, java.lang.String newName) throws java.rmi.RemoteException{
     if (admin == null)
       _initAdminProxy();
-    return admin.afficherAdresse();
-  }
-  
-  public void modifierAnnonce() throws java.rmi.RemoteException{
-    if (admin == null)
-      _initAdminProxy();
-    admin.modifierAnnonce();
-  }
-  
-  public java.lang.String afficherNom(java.lang.String nomAnnonce) throws java.rmi.RemoteException{
-    if (admin == null)
-      _initAdminProxy();
-    return admin.afficherNom(nomAnnonce);
-  }
-  
-  public java.lang.String getCategorie(java.lang.String gategorieName) throws java.rmi.RemoteException{
-    if (admin == null)
-      _initAdminProxy();
-    return admin.getCategorie(gategorieName);
-  }
-  
-  public java.lang.String listCategorie() throws java.rmi.RemoteException{
-    if (admin == null)
-      _initAdminProxy();
-    return admin.listCategorie();
+    admin.modifierCategorie(categorieID, newName);
   }
   
   public void creerCategorie(java.lang.String name) throws java.rmi.RemoteException{
@@ -86,22 +62,52 @@ public class AdminProxy implements annuaire1.Admin {
     admin.creerCategorie(name);
   }
   
-  public void supprimerCategorie() throws java.rmi.RemoteException{
+  public java.lang.String listCategories() throws java.rmi.RemoteException{
     if (admin == null)
       _initAdminProxy();
-    admin.supprimerCategorie();
+    return admin.listCategories();
   }
   
-  public void creerAnnonce(java.lang.String nameCategorie, java.lang.String nameAnnonce) throws java.rmi.RemoteException{
+  public java.lang.String listAnnoncesParVille(java.lang.String ville) throws java.rmi.RemoteException{
     if (admin == null)
       _initAdminProxy();
-    admin.creerAnnonce(nameCategorie, nameAnnonce);
+    return admin.listAnnoncesParVille(ville);
   }
   
-  public void modifierCategorie(java.lang.String oldName, java.lang.String newName) throws java.rmi.RemoteException{
+  public java.lang.String listAnnoncesParCategorie(long categorieID) throws java.rmi.RemoteException{
     if (admin == null)
       _initAdminProxy();
-    admin.modifierCategorie(oldName, newName);
+    return admin.listAnnoncesParCategorie(categorieID);
+  }
+  
+  public void creerAnnonce(java.lang.String name, long telephone, long categorieID, long numero, java.lang.String rue, long codePostal, java.lang.String ville) throws java.rmi.RemoteException{
+    if (admin == null)
+      _initAdminProxy();
+    admin.creerAnnonce(name, telephone, categorieID, numero, rue, codePostal, ville);
+  }
+  
+  public void supprimerAnnonce(long annonceID) throws java.rmi.RemoteException{
+    if (admin == null)
+      _initAdminProxy();
+    admin.supprimerAnnonce(annonceID);
+  }
+  
+  public void modifierAnnonce(long idAnnonce, java.lang.String name, long telephone, long categorieID, long numero, java.lang.String rue, long codePostal, java.lang.String ville) throws java.rmi.RemoteException{
+    if (admin == null)
+      _initAdminProxy();
+    admin.modifierAnnonce(idAnnonce, name, telephone, categorieID, numero, rue, codePostal, ville);
+  }
+  
+  public java.lang.String getCategorie(long categorieID) throws java.rmi.RemoteException{
+    if (admin == null)
+      _initAdminProxy();
+    return admin.getCategorie(categorieID);
+  }
+  
+  public java.lang.String getAnnonce(long annonceID) throws java.rmi.RemoteException{
+    if (admin == null)
+      _initAdminProxy();
+    return admin.getAnnonce(annonceID);
   }
   
   

@@ -5,6 +5,7 @@ public class Annonce {
 	private String name;
 	private Adresse adresse;
 	private Long telephone;
+	private Long id_categorie;
 	
 	public Long getId() {
 		return id;
@@ -29,5 +30,11 @@ public class Annonce {
 	}
 	public void setTelephone(Long telephone) {
 		this.telephone = telephone;
+	}
+	public Long getId_categorie() {
+		return id_categorie;
+	}
+	public void setId_categorie(Long id_categorie) {
+		this.id_categorie = id_categorie;
 	}
 }

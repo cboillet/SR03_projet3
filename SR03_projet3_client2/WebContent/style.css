@@ -1,0 +1,48 @@
+body {
+	padding-top:80px; 
+	padding-bottom:20px; 
+	background-color: #F5F5F5;
+}
+.navbar
+{
+	background: #20B2AA;
+}
+
+#header {
+	margin: 0 auto;
+	width: 70%;
+}
+#header a {
+	text-decoration: none;
+	color: black;
+}
+#header a.active {
+	color: green;
+}
+
+.table_container {
+	margin: 0 auto;
+	width: 85%;
+}
+table {
+	width: 100%;
+}
+th, td {
+	text-align: center;
+}
+.text-error {
+	color: red;
+}
+.text-success {
+	color: green;
+}
+
+.lvl1 {
+	margin-left: 15px;
+}
+.lvl2 {
+	margin-left: 40px;
+}
+.lvl3 {
+	margin-left: 65px;
+}
